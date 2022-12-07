@@ -1,6 +1,5 @@
-
-import TelegramBot from 'node-telegram-bot-api';
 import { ChatGPTAPI, ChatGPTConversation } from 'chatgpt';
+import TelegramBot from 'node-telegram-bot-api';
 
 (async () => {
   const api = new ChatGPTAPI({ sessionToken: process.env.SESSION_TOKEN });
@@ -10,7 +9,7 @@ import { ChatGPTAPI, ChatGPTConversation } from 'chatgpt';
   const { first_name: botName } = await bot.getMe();
   bot.onText(/\/chatgpt (.+)/, async (msg, match) => {
     const { id: chatId } = msg.chat;
-    console.log(new Date(), `[${msg.from.username}]: ${match[1]}`);
+    console.log(new Date(), `${msg.from.username}: ${match[1]}`);
     if (match[1] === 'new') {
       conversation = new ChatGPTConversation(api);
       await bot.sendMessage(chatId, 'Starting new conversation', { reply_to_message_id: msg.message_id });
@@ -26,7 +25,7 @@ import { ChatGPTAPI, ChatGPTConversation } from 'chatgpt';
             response = await conversation.sendMessage(match[1]);
             break;
           } catch (error) {
-            console.log(new Date(), error);
+            console.log(new Date(), error.toString());
             if (++count === maxTries) throw error;
           }
         }
