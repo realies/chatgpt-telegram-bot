@@ -19,7 +19,17 @@ import { ChatGPTAPI, ChatGPTConversation } from 'chatgpt';
       const typingInterval = setInterval(async () => await bot.sendChatAction(chatId, 'typing'), 5000);
       let response;
       try {
-        response = await conversation.sendMessage(match[1]);
+        let count = 0;
+        const maxTries = 5;
+        while (true) {
+          try {
+            response = await conversation.sendMessage(match[1]);
+            break;
+          } catch (error) {
+            console.log(new Date(), error);
+            if (++count === maxTries) throw error;
+          }
+        }
       } catch (error) {
         response = error.toString();
       }
