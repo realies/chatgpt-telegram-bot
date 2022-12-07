@@ -1,0 +1,12 @@
+{
+  "author": "realies",
+  "name": "chatgpt-telegram-bot",
+  "version": "0.0.1",
+  "main": "server.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "chatgpt": "^2.0.1",
+    "node-telegram-bot-api": "^0.60.0"
+  }
+}
