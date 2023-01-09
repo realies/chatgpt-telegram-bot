@@ -7,6 +7,6 @@
   "type": "module",
   "dependencies": {
     "chatgpt": "^2.0.3",
-    "node-telegram-bot-api": "^0.60.0"
+    "node-telegram-bot-api": "^0.61.0"
   }
 }
