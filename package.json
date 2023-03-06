@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "chatgpt": "^2.0.3",
+    "chatgpt": "^5.0.7",
     "node-telegram-bot-api": "^0.60.0"
   }
 }
